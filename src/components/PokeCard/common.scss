@@ -1,0 +1,9 @@
+.poke-card {
+  margin: 1rem;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    opacity: 0.5;
+    transform: scale(1.5);
+  }
+}

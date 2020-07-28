@@ -8,9 +8,10 @@ import {PokemonStoreContext} from './store'
 function App() {
     return (
         <BrowserRouter>
-                <Switch>
-                        <Route exect path={'/'} component={PokeList}/>
-                </Switch>
+            <Switch>
+                <Route exect path={'/'} component={PokeList}/>
+                <Route path={'/pokemon/:id'} component={PokeList}/>
+            </Switch>
         </BrowserRouter>
     );
 }

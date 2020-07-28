@@ -1,18 +1,8 @@
 import {decorate, observable, extendObservable} from 'mobx';
 import {createContext} from 'react';
 
-//
-// class Store {
-//     pokemons = [];
-// }
-//
-// Store = decorate(Store, {
-//     pokemons: observable
-// });
-//
-// export const StoreContext = createContext(new Store());
 class PokemonsStore {
-    pokemons = [];
+   @observable pokemons = [];
     limit =  20;
     offset = 0;
     prevPage = null;
@@ -22,6 +12,7 @@ class PokemonsStore {
     };
 
     addPokemons (toAdd){
+        console.log('toAdd', toAdd);
         this.pokemons = [...this.pokemons, ...toAdd]
     };
 
