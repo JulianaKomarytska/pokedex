@@ -1,23 +1,35 @@
-import {action, observable, } from 'mobx';
+import {action, observable} from 'mobx';
 import {createContext} from 'react';
 
-const PokemonsStore = observable({
-    pokemons: [],
-    limit: 20,
-    offset: 0,
-    prevPage: null,
+/**
+ * Pokemone list store
+ */
+class PokemonsStore {
+    @observable pokemons = [];
+    @observable limit = 20;
+    prevPage = null;
+    nextPage = null;
+    url = 'https://pokeapi.co/api/v2/pokemon';
 
-    get nextPage () {
-      return `?limit=${this.limit}&offset=${this.offset + this.limit}`
-    },
-
-    addPokemons (toAdd){
-        console.log('toAdd', toAdd);
-        this.pokemons = [...this.pokemons, ...toAdd]
+    @action addPokemons (toAdd){
+        this.pokemons = [...toAdd]
     }
 
-},{
-    addPokemons: action
-})
+    @action setPrevPage(link){
+        this.prevPage = link
+    }
+    @action setNextPage(link){
+        this.nextPage = link
+    }
 
-export const PokemonStoreContext = createContext(PokemonsStore);
+};
+export const PokemonStoreContext = createContext(new PokemonsStore());
+
+
+/**
+ * Loading from server
+ * @type {React.Context<IObservableValue<boolean>>}
+ */
+export const Loading = createContext(observable.box(true));
+
+
