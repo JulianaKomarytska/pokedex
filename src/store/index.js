@@ -1,4 +1,4 @@
-import {action, observable} from 'mobx';
+import {action, computed, observable} from 'mobx';
 import {createContext} from 'react';
 
 /**
@@ -9,8 +9,16 @@ class PokemonsStore {
     @observable limit = 20;
     prevPage = null;
     nextPage = null;
-    url = 'https://pokeapi.co/api/v2/pokemon';
+    baseUrl = 'https://pokeapi.co/api/v2/pokemon';
     limitSelect = [20, 30, 50];
+
+    @computed get url () {
+        if (!this.nextPage) {
+            return 'https://pokeapi.co/api/v2/pokemon';
+        } else {
+            return `${this.baseUrl}/?limit=${this.limit}`
+        }
+    }
 
     @action addPokemons (toAdd){
         this.pokemons = [...toAdd]
@@ -32,12 +40,24 @@ class PokemonsStore {
 export const PokemonStoreContext = createContext(new PokemonsStore());
 
 
+class AllPokemons {
+    @observable list = {}
+}
+
 /**
  * Loading from server
  * @type {React.Context<IObservableValue<boolean>>}
  */
 export const Loading = createContext(observable.box(true));
 
+
+class Filter {
+    @observable filter = ''
+
+    @computed get filteredList () {
+
+    }
+}
 
 
 class PokeModal {

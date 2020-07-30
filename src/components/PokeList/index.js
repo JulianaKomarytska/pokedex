@@ -1,4 +1,4 @@
-import { getPokemons } from '../../api'
+import {getPokemons} from '../../api'
 import React, {useContext, useEffect, Fragment} from 'react';
 import {Loading, PokemonStoreContext} from '../../store';
 import {observer} from 'mobx-react';
@@ -11,7 +11,7 @@ import LimitSelect from '../LimitSelect'
 
 configure({enforceActions: 'observed'});
 
-const PokeList =  ( props )  => {
+const PokeList = (props) => {
     let store = useContext(PokemonStoreContext);
     let loading = useContext(Loading);
 
@@ -22,7 +22,7 @@ const PokeList =  ( props )  => {
         store.setNextPage(data.next);
         runInAction(() => loading.set(false));
 
-        store.addPokemons(data.results.map(function(item){
+        store.addPokemons(data.results.map(function (item) {
             const index = /.*\/(\d*)\/.*?$/g.exec(item.url)[1];
             return {
                 name: item.name,
@@ -33,18 +33,21 @@ const PokeList =  ( props )  => {
 
     };
 
-    useEffect(()=>{
+    useEffect(() => {
         !store.nextPage && getPokemonsList(store.url);
-    });
+        store.nextPage && getPokemonsList(store.url)
+    }, [store.limit]);
 
     return (
         <Fragment>
-            <LimitSelect/>
-        <div className='poke-list'>
+            <div className="pokedex__limit">
+                <LimitSelect/>
+            </div>
+            <div className='poke-list'>
                 {loading.get() && 'Loading...'}
                 {store.pokemons.length ? store.pokemons.slice().map(pokemon => (
                     <PokeCard key={pokemon.name} data={pokemon}/>)) : ''}
-        </div>
+            </div>
             {store.nextPage && <PaginationBtn data={{
                 link: store.nextPage,
                 className: 'nextPage',

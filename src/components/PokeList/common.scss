@@ -6,3 +6,20 @@
   padding: 1px;
   margin: 0;
 }
+
+.pokedex__limit{
+  display: flex;
+  justify-content: flex-end;
+  padding: 1em 0;
+  select{
+    display: block;
+    border: none;
+    border-bottom: 2px solid;
+    option{
+      display: block;
+      &:hover{
+        box-shadow: 0 0 10px 100px orange inset;
+      }
+    }
+  }
+}
