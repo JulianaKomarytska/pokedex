@@ -4,7 +4,7 @@ import {createContext} from 'react';
 /**
  * Pokemone list store
  */
-class PokemonsStore {
+class Pokemons {
     @observable pokemons = [];
     @observable limit = 20;
     prevPage = null;
@@ -22,6 +22,7 @@ class PokemonsStore {
 
     @action addPokemons (toAdd){
         this.pokemons = [...toAdd]
+        AllPokemonsStore.addPokemons(toAdd)
     }
 
     @action setPrevPage(link){
@@ -36,17 +37,27 @@ class PokemonsStore {
         console.log('limit', this.limit);
     }
 
-};
-export const PokemonStoreContext = createContext(new PokemonsStore());
+}
+
+const PokemonsStore = new Pokemons()
+export const PokemonStoreContext = createContext(PokemonsStore);
 
 
 class AllPokemons {
-    @observable list = {}
+    @observable list = new Map()
+    @action addPokemons = ( data ) => {
+        data.forEach( elem => {
+            return this.list.set(elem.name, elem)
+        })
+
+    }
 }
+
+const AllPokemonsStore = new AllPokemons()
 
 /**
  * Loading from server
- * @type {React.Context<IObservableValue<boolean>>}
+ * @type {React.Context<boolean>}
  */
 export const Loading = createContext(observable.box(true));
 
@@ -55,9 +66,16 @@ class Filter {
     @observable filter = ''
 
     @computed get filteredList () {
-
+        let arr = []
+        for ( let [key, value] of AllPokemonsStore.list){
+            key.includes(this.filter) && (arr.push(value))
+        }
+        return arr
     }
+
 }
+
+export const FilterStore = createContext(new Filter())
 
 
 class PokeModal {
