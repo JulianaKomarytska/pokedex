@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import {observer} from 'mobx-react';
 import PokeList from './components/PokeList';
+import Modal from './components/Modal'
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import {NavBar} from './components/NavBar'
 
@@ -10,8 +11,8 @@ function App() {
         <BrowserRouter>
             <NavBar/>
             <Switch>
-                <Route exect path={'/'} component={PokeList}/>
-                <Route path={'/pokemon/:id'} component={PokeList}/>
+                <Route exact path={'/'} component={PokeList}/>
+                <Route path={'/pokemon/:id'} component={Modal}/>
             </Switch>
         </BrowserRouter>
     );

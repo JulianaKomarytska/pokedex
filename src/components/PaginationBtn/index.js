@@ -5,14 +5,13 @@ import './common.scss';
 
 
 const PaginationBtn = (props) => {
-    const {link, className, actions, text} = props.data;
-    console.log('action', actions);
+    const {link, className, actions} = props.data;
     const getOtherPage = () => {
-        console.log('getOtherPage');
-        actions(link)
-    }
+        actions(link);
+        document.documentElement.scrollTop -=document.documentElement.scrollTop
+    };
     return (
-        <div onClick={getOtherPage} className={className}></div>
+        <div onClick={getOtherPage} className={className}/>
     )
 };
 

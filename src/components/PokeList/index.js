@@ -5,8 +5,9 @@ import {observer} from 'mobx-react';
 import {configure, runInAction} from 'mobx';
 import './common.scss'
 
-import PokeCard from '../PokeCard'
+import PokeCard from '../PokeListItem'
 import PaginationBtn from '../PaginationBtn'
+import LimitSelect from '../LimitSelect'
 
 configure({enforceActions: 'observed'});
 
@@ -34,11 +35,11 @@ const PokeList =  ( props )  => {
 
     useEffect(()=>{
         !store.nextPage && getPokemonsList(store.url);
-        console.log('store', store);
     });
 
     return (
-        <>
+        <Fragment>
+            <LimitSelect/>
         <div className='poke-list'>
                 {loading.get() && 'Loading...'}
                 {store.pokemons.length ? store.pokemons.slice().map(pokemon => (
@@ -47,16 +48,14 @@ const PokeList =  ( props )  => {
             {store.nextPage && <PaginationBtn data={{
                 link: store.nextPage,
                 className: 'nextPage',
-                text: 'next',
                 actions: getPokemonsList
             }}/>}
             {store.prevPage && <PaginationBtn data={{
                 link: store.prevPage,
                 className: 'prevPage',
-                text: 'previous',
                 actions: getPokemonsList
             }}/>}
-        </>
+        </Fragment>
     )
 
 }

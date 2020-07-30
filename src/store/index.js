@@ -10,6 +10,7 @@ class PokemonsStore {
     prevPage = null;
     nextPage = null;
     url = 'https://pokeapi.co/api/v2/pokemon';
+    limitSelect = [20, 30, 50];
 
     @action addPokemons (toAdd){
         this.pokemons = [...toAdd]
@@ -20,6 +21,11 @@ class PokemonsStore {
     }
     @action setNextPage(link){
         this.nextPage = link
+    }
+
+    @action changeLimit = (limit) => {
+        this.limit = limit
+        console.log('limit', this.limit);
     }
 
 };
@@ -33,3 +39,25 @@ export const PokemonStoreContext = createContext(new PokemonsStore());
 export const Loading = createContext(observable.box(true));
 
 
+
+class PokeModal {
+    @observable data = null;
+    @observable id = null;
+
+    @action setId = ( id ) => {
+        console.log('setId');
+        this.id = id;
+    }
+
+    @action updateData = ( data ) => {
+        console.log('updateData');
+        this.data = data
+    }
+
+    @action clearData = () => {
+        console.log('clearData');
+        this.data = null;
+    }
+}
+
+export const PokemonDataStore = createContext(new PokeModal());
