@@ -12,10 +12,15 @@
   display: flex;
   justify-content: flex-end;
   padding: 1em 0;
+  max-width: 1200px;
+  margin: 0 auto;
   select{
     display: block;
     border: none;
-    border-bottom: 2px solid;
+    font-size: 1.1em;
+    color: rgba(56, 54, 54, 0.80);
+    border-bottom: 2px solid rgba(56, 54, 54, 0.40);
+    outline: none;
     option{
       display: block;
       &:hover{
