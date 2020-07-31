@@ -1,0 +1,42 @@
+.poledex__input{
+  width: calc(100% - 4em);
+  display: inline-block;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid rgba(78, 78, 78, 0.55);
+  background-color: transparent;
+  padding: 1em;
+  margin: 0 auto;
+}
+
+.poledex__submit{
+  display: inline-block;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  opacity: 0.5;
+  transition: all 0.2s linear;
+  position: relative;
+  padding: 1em;
+  &:after{
+    position: absolute;
+    display: inline;
+    top: 0;
+    left: 0;
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAABC5JREFUaAXtWE1oE0EUntkkgmihil4UPIiN9iwerUTUqwXBHnqq7SYx9eDJg7V/Wj14KF4a26Slpx48CC14sYpBBUHFo0hbURAVBUGharFJdnxvm21ndrObmUkgLWQh7LzZ975535s3M29CSONpRKARgUYE6hkBqjt4JpOJ5pnRTol1mhF6gDC2z8ai9Csl7BMjxqMItWbj8fii7hgydsoE0tnsUVIktxlhJ+UGoE9IiFxJmeYbGX1VHWkCuVwu/G7x/R0YIMUYk7ZDhyilDF7p1uihy7FYrIB9tXqkHEnPzOwiv//cZ4zEqhmYUpIjO3ecS3V2/qwGh7c1eKFcGyPv5zw49NgwSJxGQkf27m5uwh+27T745sazAwCBsDHdHzXlcCU7TBtP5CldDDFqJhM9z8rYL0Af/rLj45NtFrEmIX9aHD3EKqXiJaevmndgCtkL1iKv+ZyHqD/dvi3S3tXV9Utm4Onp6eaV1fwsOH7C0bfXhEGO1WJhB6cQ7jb8goXIqziPDiNRtIFILTkEbEzAduRq3r4E0lNTh91bJaaNbOR5p9DGIEYP34fYOAbfp9P2JcAK7CwPiAs2mSyb87yabxttEYNXcI/Bf5Nt+xLAE1YEMe6Jso4kYnjHUMf0JWCXBzxemD7nRa22C8MzhgaoL4H12qYEuqep6YsGvmDiwXDqJ0FLTfAnoIajpw37qZ7hhpU/AagqN9QI+bG8vJ+XddpuDKhav+ng8Da+BLAk5hVJgR0XZA2BFottLrOPLllZ9CWA9byIZnWIsroEp/F5wYqJ26rwTVLwJUDDdI7HgMFPYW3D96m00RYxeJuwQR7wsk7bl0Cqu3uBEriMcE+RsizWNlyXVBNtsKjjlQH7IdzW3vJ9Om1fAjYY3KRKl5E1bMaiWJipkEDdv6uFOb4iRUxmhK7rOOy2CSRQqhbTvBFWleDQS5l0Qp2Vf/lXcKYIqQdkRnvjF17wuLrtivvw2lVyaR4cj7kHWattoDyAE9Y5pOyt0t6xrA53zqM92OQjBj1omuZnN56OXJEAgtbwSpkHUpF1Rykd7k2YQ+uyRiMwhRw8vMO2RlvOQO6OCWvCUajwRhtqGKMYeUGVscG7E9lBoU9RkJoBHlP5bxVK5hkNDzs5PzaegSUgPgalQxcT5rDYKycpE3Bg7QsP3BmEP7Yg1PAHyndC2QcChxTu8+6tEiNuMTbk4DhvmKHBVLxHeWfSJuAMrPP2IwEzMQAzcUMFsy4E0MF0ZnKAWZYnbVRJ1I1AEAlwqj+VjI/IzERdCaCDkE79sCY8uS9Lou4EgkjAqXcNzombQTMhdQ4EAdTiGy5cjLgHi7GRsYlsn6ef69gUBNAfzPlyJKDPc25w/pNNkUK8Q3bEIfLYB6dKXyph3uK/b4k2kkhPZK9uCWcbTjYi0IhAIwJbOwL/AX4Jk+E/uw6JAAAAAElFTkSuQmCC") no-repeat;
+    width: 2em;
+    height: 2em;
+    content: '';
+    background-size: contain;
+    transform: rotateY(180deg);
+  }
+  &:hover{
+    opacity: 1;
+  }
+}
+
+.pokedex__wrapper{
+  display: block;
+  width: 90%;
+  margin: 0 auto;
+}

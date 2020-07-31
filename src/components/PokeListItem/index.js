@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import './common.scss'
 
 
-export default function PokeCard ( params ) {
+export default function PokeListItem ( params ) {
     const {index, name} = params.data;
 
     return (

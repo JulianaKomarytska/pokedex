@@ -8,4 +8,4 @@ export const getPokemonData = async (params, cancel) => {
     return axios.get(`https://pokeapi.co/api/v2/pokemon/${params.id}`,{
         cancelToken: cancel
     })
-}
+};

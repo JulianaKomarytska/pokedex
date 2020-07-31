@@ -1,0 +1,30 @@
+nav{
+  position: absolute;
+  display: block;
+  top: 2em;
+  right: 2em;
+  a{
+    position: relative;
+    color: rgb(255, 255, 255);
+    padding-bottom: 5px;
+    margin-left: 3em;
+    &:after{
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      content: '';
+      border-bottom: 1px solid rgb(43, 29, 255);
+      transition: all 0.2s ease-in-out;
+      width: 100%;
+      transform: scale(0);
+    }
+    &:hover{
+      color: rgb(255, 255, 255);
+      &:after{
+        border-bottom: 1px solid rgb(255, 255, 255);
+        transform: scale(1)
+      }
+    }
+  }
+}

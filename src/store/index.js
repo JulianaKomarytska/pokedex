@@ -44,7 +44,7 @@ export const PokemonStoreContext = createContext(PokemonsStore);
 
 
 class AllPokemons {
-    @observable list = new Map()
+    @observable list = new Map();
     @action addPokemons = ( data ) => {
         data.forEach( elem => {
             return this.list.set(elem.name, elem)
@@ -53,7 +53,7 @@ class AllPokemons {
     }
 }
 
-const AllPokemonsStore = new AllPokemons()
+const AllPokemonsStore = new AllPokemons();
 
 /**
  * Loading from server
@@ -73,13 +73,22 @@ class Filter {
         return arr
     }
 
+    @action change ( data ) {
+        this.filter = data
+    }
+
+    @action clear () {
+        this.filter = ''
+    }
+
 }
 
-export const FilterStore = createContext(new Filter())
+export const FilterStore = createContext(new Filter());
 
 
 class PokeModal {
     @observable data = null;
+    @observable error = null;
     @observable id = null;
 
     @action setId = ( id ) => {
@@ -95,6 +104,14 @@ class PokeModal {
     @action clearData = () => {
         console.log('clearData');
         this.data = null;
+    }
+
+    @action setError = ( data ) => {
+        this.error = data
+    }
+
+    @action clearError = () => {
+        this.error = null;
     }
 }
 

@@ -9,6 +9,7 @@ import PokeCard from '../PokeListItem'
 import PaginationBtn from '../PaginationBtn'
 import LimitSelect from '../LimitSelect'
 
+
 configure({enforceActions: 'observed'});
 
 const PokeList = (props) => {

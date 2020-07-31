@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useRef} from 'react'
+import React, {useContext, useRef} from 'react'
 import { observer } from 'mobx-react';
 import {PokemonStoreContext} from '../../store';
 
